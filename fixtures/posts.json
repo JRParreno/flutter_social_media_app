@@ -1,0 +1,52 @@
+{
+    "posts": [
+        {
+            "firstName": "John",
+            "lastName": "Doe",
+            "postImageUrl":
+                "https://media.npr.org/assets/img/2021/10/06/gettyimages-1302813215_wide-6c48e5a6aff547d2703693450c4805978de47435-s1100-c50.jpg",
+            "profileUrl":
+                "https://drive.google.com/uc?export=view&id=1P7J-cOafFynKg-3N383oLneD5fzkVIKK",
+            "likeCount": 37882,
+            "commentCount": 2693,
+            "bookmarkCount": 200,
+            "location": "Manila, Philippines"
+        },
+        {
+            "firstName": "Alexan",
+            "lastName": "Doe",
+            "postImageUrl":
+                "https://media.philstar.com/photos/2021/03/02/boracay-island-tourists_2021-03-02_21-38-38.jpg",
+            "profileUrl":
+                "https://drive.google.com/uc?export=view&id=1bQzjSDLGd_Brw2Fr4RDH7CEGzg65KiIO",
+            "likeCount": 37882,
+            "commentCount": 2693,
+            "bookmarkCount": 200,
+            "location": "Manila, Philippines"
+        },
+        {
+            "firstName": "Anthony",
+            "lastName": "Cameron",
+            "postImageUrl":
+                "https://gttp.imgix.net/301908/x/0/top-10-palawan-island-tours-amp-activities-you-shouldn-t-miss-9.jpg?auto=compress%2Cformat&ch=Width%2CDPR&dpr=1&ixlib=php-3.3.0&w=883",
+            "profileUrl":
+                "https://drive.google.com/uc?export=view&id=1TdzfvKCqBWL29ZNdbwBrYit-Ri8iVWKn",
+            "likeCount": 37882,
+            "commentCount": 2693,
+            "bookmarkCount": 200,
+            "location": "Manila, Philippines"
+        },
+        {
+            "firstName": "Anthony",
+            "lastName": "Cameron",
+            "postImageUrl":
+                "https://media.philstar.com/photos/2021/03/02/boracay-island-tourists_2021-03-02_21-38-38.jpg",
+            "profileUrl":
+                "https://drive.google.com/uc?export=view&id=1TdzfvKCqBWL29ZNdbwBrYit-Ri8iVWKn",
+            "likeCount": 37882,
+            "commentCount": 2693,
+            "bookmarkCount": 200,
+            "location": "Manila, Philippines"
+        }
+    ]
+}
