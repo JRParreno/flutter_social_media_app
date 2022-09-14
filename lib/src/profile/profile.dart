@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_media_app/src/common/poppins_text.dart';
 import 'package:social_media_app/src/profile/bloc/profile_bloc/profile_bloc.dart';
+import 'package:status_view/status_view.dart';
 
 import '../core/theme.dart';
 import '../models/profile.dart';
@@ -83,33 +85,121 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
-      body: BlocBuilder<ProfileBloc, ProfileState>(
-        builder: ((context, state) {
-          if (state is ProfileLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          if (state is ProfileLoaded) {
-            return Image(
-              image: const NetworkImage(
-                  "https://media.architecturaldigest.com/photos/5d97a9305244a50008428cff/master/w_1600%2Cc_limit/AD1119_SYSTROM_7.jpg"),
-              fit: BoxFit.cover,
-              loadingBuilder: ((context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Center(
-                  child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
-                        : null,
+      body: Container(
+        color: AppTheme.lightColor,
+        child: BlocBuilder<ProfileBloc, ProfileState>(
+          builder: ((context, state) {
+            if (state is ProfileLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (state is ProfileLoaded) {
+              final double avatarHeight =
+                  MediaQuery.of(context).size.height * 0.10;
+              return Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.45,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Image(
+                          height: MediaQuery.of(context).size.height * 0.35,
+                          width: double.infinity,
+                          image: NetworkImage(state.profile.backgroundUrl),
+                          fit: BoxFit.cover,
+                          loadingBuilder: ((context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                    : null,
+                              ),
+                            );
+                          }),
+                        ),
+                        Positioned(
+                          top: (MediaQuery.of(context).size.height * 0.35) -
+                              avatarHeight,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    PoppinsText(
+                                      text: state.profile.followers,
+                                      style: const TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppTheme.darkColor),
+                                    ),
+                                    const PoppinsText(text: "Followers")
+                                  ],
+                                ),
+                                StatusView(
+                                  radius: avatarHeight,
+                                  spacing: 15,
+                                  strokeWidth: 2,
+                                  indexOfSeenStatus: 0,
+                                  numberOfStatus: 10,
+                                  padding: 4,
+                                  seenColor: Colors.grey,
+                                  unSeenColor: AppTheme.primaryColor,
+                                  centerImageUrl: state.profile.profileUrl,
+                                ),
+                                Column(
+                                  children: [
+                                    PoppinsText(
+                                      text: state.profile.following,
+                                      style: const TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppTheme.darkColor),
+                                    ),
+                                    const PoppinsText(text: "Following")
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                );
-              }),
-            );
-          }
-          return Container();
-        }),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        PoppinsText(
+                          text:
+                              "${state.profile.firstName} ${state.profile.lastName}",
+                          style: const TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.darkColor),
+                        ),
+                        PoppinsText(
+                          text: state.profile.intro,
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              );
+            }
+            return Container();
+          }),
+        ),
       ),
     );
   }
