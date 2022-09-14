@@ -30,7 +30,8 @@ class PostHeader extends StatelessWidget {
               centerImageUrl: post.profileUrl,
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(ProfilePage.routeName);
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (ctx) => const ProfilePage()));
             },
           ),
         ),

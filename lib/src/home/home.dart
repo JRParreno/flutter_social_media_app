@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:social_media_app/src/common/poppins_text.dart';
-import 'package:social_media_app/src/common/post/post_item_model.dart';
 import 'package:social_media_app/src/core/theme.dart';
 import 'package:social_media_app/src/home/bloc/post/post_bloc.dart';
 import 'package:social_media_app/src/home/bloc/story/story_bloc.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_media_app/src/common/navigation/home_navigation.dart';
 import 'package:social_media_app/src/core/theme.dart';
-import 'package:social_media_app/src/home/home.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -11,18 +11,7 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
   int _selectedIndex = 0;
-  Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
-    0: GlobalKey<NavigatorState>(),
-    1: GlobalKey<NavigatorState>(),
-    2: GlobalKey<NavigatorState>(),
-  };
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
-  ];
+  late List<Widget> _pages;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -31,10 +20,28 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _selectedIndex = 0;
+
+    _pages = [
+      const HomeNavigation(),
+    ];
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: buildNavigator(),
+      body: WillPopScope(
+        onWillPop: () async {
+          return !await Navigator.maybePop(
+            MyKeys.getKeys()[_selectedIndex].currentState!.context,
+          );
+        },
+        child: IndexedStack(
+          index: _selectedIndex,
+          children: _pages,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -72,14 +79,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
       ),
     );
   }
+}
 
-  buildNavigator() {
-    return Navigator(
-      key: navigatorKeys[_selectedIndex],
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute(
-            builder: (_) => _widgetOptions.elementAt(_selectedIndex));
-      },
-    );
-  }
+class MyKeys {
+  static final homeTab = GlobalKey(debugLabel: 'homeTab');
+  static final searchTab = GlobalKey(debugLabel: 'searchTab');
+  static final addTab = GlobalKey(debugLabel: 'addTab');
+  static final notifTab = GlobalKey(debugLabel: 'notifTab');
+  static final profileTab = GlobalKey(debugLabel: 'profileTab');
+
+  static List<GlobalKey> getKeys() =>
+      [homeTab, searchTab, addTab, notifTab, profileTab];
 }

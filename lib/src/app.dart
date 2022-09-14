@@ -5,8 +5,6 @@ import 'package:social_media_app/src/home/bloc/post/post_bloc.dart';
 import 'package:social_media_app/src/home/bloc/story/story_bloc.dart';
 
 import 'common/navigation/bottom_navigation.dart';
-import 'home/home.dart';
-import 'profile/profile.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -29,10 +27,6 @@ class MyApp extends StatelessWidget {
         home: const BottomNavigation(),
         theme: AppTheme.defaultTheme,
         darkTheme: ThemeData.dark(),
-        routes: {
-          HomePage.routeName: (ctx) => const HomePage(),
-          ProfilePage.routeName: (ctx) => const ProfilePage(),
-        },
       ),
     );
   }
