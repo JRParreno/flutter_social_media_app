@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_media_app/src/common/poppins_text.dart';
-import 'package:social_media_app/src/common/post/post_item_model.dart';
+import 'package:social_media_app/src/models/post_item_model.dart';
 import 'package:social_media_app/src/core/theme.dart';
 
 class PostInteraction extends StatelessWidget {

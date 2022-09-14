@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:social_media_app/src/common/post/post_item_model.dart';
+import 'package:social_media_app/src/models/post_item_model.dart';
 
 import '../../../core/fixture_reader.dart';
 

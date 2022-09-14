@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_media_app/src/common/post/post_item_model.dart';
+import 'package:social_media_app/src/models/post_item_model.dart';
+import 'package:social_media_app/src/models/profile.dart';
 import 'package:social_media_app/src/profile/profile.dart';
 import 'package:status_view/status_view.dart';
 
@@ -30,8 +31,18 @@ class PostHeader extends StatelessWidget {
               centerImageUrl: post.profileUrl,
             ),
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (ctx) => const ProfilePage()));
+              Navigator.of(context).pushNamed(ProfilePage.routeName,
+                  arguments: Profile(
+                    id: "932",
+                    firstName: post.firstName,
+                    lastName: post.lastName,
+                    profileUrl: post.profileUrl,
+                    intro: "Take it easy",
+                    followers: "100k",
+                    following: "299",
+                    backgroundUrl:
+                        "https://img.freepik.com/free-photo/portrait-beautiful-healthy-young-adults-girlfriend-boyfriend-hugging-happy-young-pretty-couple-love-dating-sunny-spring-along-beach-warm-colors_273443-1155.jpg?w=2000",
+                  ));
             },
           ),
         ),

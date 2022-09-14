@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:social_media_app/src/common/post/post_item/post_item.dart';
-import 'package:social_media_app/src/common/post/post_item_model.dart';
+import 'package:social_media_app/src/models/post_item_model.dart';
+
+import '../../models/post_item_model.dart';
 
 class PostItemList extends StatelessWidget {
   final List<PostItemModel> postList;

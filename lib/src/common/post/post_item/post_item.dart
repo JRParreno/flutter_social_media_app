@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_media_app/src/common/post/post_item_model.dart';
 
+import '../../../models/post_item_model.dart';
 import 'post_header.dart';
 import 'post_image.dart';
 import 'post_interaction.dart';
