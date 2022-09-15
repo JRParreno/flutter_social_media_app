@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_media_app/src/common/avatar/story_avatar.dart';
 import 'package:social_media_app/src/models/post_item_model.dart';
 import 'package:social_media_app/src/models/profile.dart';
 import 'package:social_media_app/src/profile/profile.dart';
@@ -19,16 +20,11 @@ class PostHeader extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(right: 10.0),
           child: InkWell(
-            child: StatusView(
-              radius: 20,
-              spacing: 15,
-              strokeWidth: 2,
-              indexOfSeenStatus: 0,
-              numberOfStatus: 10,
-              padding: 4,
-              seenColor: Colors.grey,
-              unSeenColor: AppTheme.primaryColor,
-              centerImageUrl: post.profileUrl,
+            child: StoryAvatar(
+              index: 0,
+              imageUrl: post.profileUrl,
+              outerRadius: 23,
+              innerRadius: 20,
             ),
             onTap: () {
               Navigator.of(context).pushNamed(ProfilePage.routeName,

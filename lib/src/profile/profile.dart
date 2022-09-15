@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_media_app/src/common/avatar/story_avatar.dart';
 import 'package:social_media_app/src/common/poppins_text.dart';
 import 'package:social_media_app/src/profile/bloc/profile_bloc/profile_bloc.dart';
 import 'package:status_view/status_view.dart';
@@ -22,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ReadContext(context).read<ProfileBloc>().add(ProfileInitialEvent());
       final params = ModalRoute.of(context)!.settings.arguments! as Profile;
-      Future.delayed(const Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 1), () {
         handleGetProfile(data: params);
       });
     });
@@ -144,16 +145,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                     const PoppinsText(text: "Followers")
                                   ],
                                 ),
-                                StatusView(
-                                  radius: avatarHeight,
-                                  spacing: 15,
-                                  strokeWidth: 2,
-                                  indexOfSeenStatus: 0,
-                                  numberOfStatus: 10,
-                                  padding: 4,
-                                  seenColor: Colors.grey,
-                                  unSeenColor: AppTheme.primaryColor,
-                                  centerImageUrl: state.profile.profileUrl,
+                                StoryAvatar(
+                                  index: 1,
+                                  imageUrl: state.profile.profileUrl,
+                                  outerRadius: avatarHeight + 3,
+                                  innerRadius: avatarHeight,
                                 ),
                                 Column(
                                   children: [

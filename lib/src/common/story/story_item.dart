@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:social_media_app/src/common/poppins_text.dart';
 import 'package:social_media_app/src/common/story/story_item_model.dart';
 import 'package:social_media_app/src/core/theme.dart';
-import 'package:status_view/status_view.dart';
+
+import '../avatar/story_avatar.dart';
 
 class StoryItem extends StatelessWidget {
   final StoryItemModel story;
@@ -18,16 +19,9 @@ class StoryItem extends StatelessWidget {
       width: 70,
       child: Column(
         children: [
-          StatusView(
-            radius: 30,
-            spacing: 15,
-            strokeWidth: 2,
-            indexOfSeenStatus: 0,
-            numberOfStatus: 10,
-            padding: 4,
-            seenColor: Colors.grey,
-            unSeenColor: AppTheme.primaryColor,
-            centerImageUrl: story.imageUrl,
+          StoryAvatar(
+            index: index,
+            imageUrl: story.imageUrl,
           ),
           Expanded(
             child: Padding(
