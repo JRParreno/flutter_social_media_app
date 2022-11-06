@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app/src/core/theme.dart';
 import 'package:social_media_app/src/home/bloc/post/post_bloc.dart';
 import 'package:social_media_app/src/home/bloc/story/story_bloc.dart';
+import 'package:social_media_app/src/non_auth/login/login.dart';
 
 import 'common/navigation/bottom_navigation.dart';
 
@@ -24,9 +25,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => PostBloc()),
       ],
       child: MaterialApp(
-        home: const BottomNavigation(),
+        home: const LoginPage(),
         theme: AppTheme.defaultTheme,
-        darkTheme: ThemeData.dark(),
+        darkTheme: AppTheme.darkmTheme,
+        routes: {
+          LoginPage.routeName: (ctx) => const LoginPage(),
+          BottomNavigation.routeName: (ctx) => const BottomNavigation(),
+        },
       ),
     );
   }

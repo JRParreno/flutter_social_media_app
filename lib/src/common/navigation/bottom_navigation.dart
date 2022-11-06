@@ -3,6 +3,7 @@ import 'package:social_media_app/src/common/navigation/home_navigation.dart';
 import 'package:social_media_app/src/core/theme.dart';
 
 class BottomNavigation extends StatefulWidget {
+  static const String routeName = '/root';
   const BottomNavigation({super.key});
 
   @override
@@ -24,7 +25,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
     super.initState();
     _selectedIndex = 0;
 
+    // setup tab home pages
     _pages = [
+      const HomeNavigation(),
+      const HomeNavigation(),
+      const HomeNavigation(),
+      const HomeNavigation(),
       const HomeNavigation(),
     ];
   }

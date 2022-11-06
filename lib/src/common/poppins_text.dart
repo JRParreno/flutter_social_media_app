@@ -22,9 +22,15 @@ class PoppinsText extends StatelessWidget {
     return Text(
       text,
       maxLines: maxLines,
-      style: style ??
-          const TextStyle(
-              fontFamily: "Poppins", fontSize: 14, color: AppTheme.darkColor),
+      style: TextStyle(
+          fontFamily: "Poppins",
+          fontSize: style != null ? style!.fontSize : 14,
+          color: style != null
+              ? style!.color
+              : Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : AppTheme.darkColor,
+          fontWeight: style != null ? style!.fontWeight : null),
       textAlign: textAlign ?? TextAlign.left,
       textDirection: textDirection ?? TextDirection.ltr,
     );
