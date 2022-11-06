@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_media_app/src/common/avatar/story_avatar.dart';
 import 'package:social_media_app/src/common/poppins_text.dart';
 import 'package:social_media_app/src/profile/bloc/profile_bloc/profile_bloc.dart';
-import 'package:status_view/status_view.dart';
 
 import '../core/theme.dart';
 import '../models/profile.dart';

@@ -3,8 +3,6 @@ import 'package:social_media_app/src/common/avatar/story_avatar.dart';
 import 'package:social_media_app/src/models/post_item_model.dart';
 import 'package:social_media_app/src/models/profile.dart';
 import 'package:social_media_app/src/profile/profile.dart';
-import 'package:status_view/status_view.dart';
-
 import '../../../core/theme.dart';
 import '../../poppins_text.dart';
 
